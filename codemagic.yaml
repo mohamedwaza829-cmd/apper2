@@ -15,16 +15,14 @@ workflows:
           npm run build
       - name: Configure and Sync Android
         script: |
-          # إجبار الكاباسيتور على القراءة من مجلد dist الصحيح
-          npx cap copy android --web-dir=dist || true
+          # إنشاء المجلد الوهمي الذي تبحث عنه الأداة ونقل الملفات إليه لتخطي الخطأ
+          mkdir -p www
+          cp -r dist/* www/
           
           if [ ! -d "android" ]; then
-            npx cap init apper2 io.codemagic.android --web-dir=dist
+            npx cap init apper2 io.codemagic.android --web-dir=www
             npx cap add android
           fi
-          
-          # تحديث ملف الإعدادات لمنع الخطأ
-          sed -i '' 's/"webDir": "www"/"webDir": "dist"/g' capacitor.config.json || sed -i 's/"webDir": "www"/"webDir": "dist"/g' capacitor.config.json || true
           
           npx cap sync android
       - name: Build Android package
