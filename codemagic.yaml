@@ -9,13 +9,13 @@ workflows:
       - name: Install dependencies
         script: |
           npm install
-          npm install @capacitor/core @capacitor/cli
+          npm install @capacitor/core @capacitor/cli @capacitor/android
       - name: Build web assets
         script: |
           npm run build
       - name: Configure and Sync Android
         script: |
-          # إنشاء المجلد الوهمي الذي تبحث عنه الأداة ونقل الملفات إليه لتخطي الخطأ
+          # إنشاء المجلد الوهمي ونقل الملفات إليه لتخطي خطأ المسار
           mkdir -p www
           cp -r dist/* www/
           
