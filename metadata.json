@@ -1,0 +1,10 @@
+{
+  "name": "Evolum Wellness",
+  "description": "A meditation, yoga, and longevity wellness application built with Kotlin and Jetpack Compose.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
