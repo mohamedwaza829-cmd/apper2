@@ -11,10 +11,13 @@ workflows:
       node: latest
     scripts:
       - name: Install dependencies
-        script: | 
+        script: |
           npm install
-     - name: Build Android package
-        script: | 
-          cd android && ./gradlew assembleDebug
+      - name: Build Android package
+        script: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
     artifacts:
       - android/app/build/outputs/apk/**/*.apk
+
